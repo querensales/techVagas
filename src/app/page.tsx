@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import Header from './components/Header/header';
 import JobModal from './components/Header/JobModal/JobModal';
-import JobList from './components/JobList/JobList'; 
-
+import JobList from './components/JobList/JobList';
 
 export default function Home() {
    const [isModalOpen, setIsModalOpen] = useState(false);
