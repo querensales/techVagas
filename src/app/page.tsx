@@ -1,7 +1,8 @@
 "use client";
 import { useState } from 'react';
-import CreateJobModal from './components/Create-job-modal/createJobModal';
 import Header from './components/Header/header';
+import JobModal from './components/Header/JobModal/JobModal';
+
 
 export default function Home() {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,10 +27,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      {/* O modal é renderizado condicionalmente com base no estado */}
-      {/* Ele recebe a função para se fechar como prop */}
-      {isModalOpen && <CreateJobModal onClose={handleCloseModal} />}
+      {isModalOpen && <JobModal onClose={handleCloseModal} />}
     </div>
   );
 }
