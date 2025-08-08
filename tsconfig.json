@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/components/Header"
-  ],
+, "src/app/components/JobModal"  ],
   "exclude": [
     "node_modules"
   ]

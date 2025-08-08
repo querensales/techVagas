@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Header from './components/Header/header';
-import JobModal from './components/Header/JobModal/JobModal';
+import JobModal from './components/JobModal/JobModal';
 
 
 export default function Home() {
