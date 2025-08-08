@@ -1,15 +1,8 @@
 "use client";
 import { useState } from 'react';
 import Header from './components/Header/header';
-<<<<<<< Updated upstream
 import JobModal from './components/Header/JobModal/JobModal';
-=======
-import JobModal from './components/JobModal/JobModal';
 import JobList from './components/JobList/JobList'; 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 
 export default function Home() {
