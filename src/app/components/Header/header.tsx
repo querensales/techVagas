@@ -5,7 +5,7 @@ import { JSX } from "react";
         onAnnounceClick: () => void; // Define que o componente espera uma função
     }
 
-export default function HeaderComponent({ onAnnounceClick }: HeaderProps): JSX.Element {
+export default function Header({ onAnnounceClick }: HeaderProps): JSX.Element {
  
     return (
 
