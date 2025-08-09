@@ -19,6 +19,11 @@ export default function Home() {
       <Header onAnnounceClick={handleOpenModal} />
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <JobList />
+        <div className="px-4 py-6 sm:px-0">
+          <div className=" h-96 flex justify-center items-center">
+            <JobList />
+          </div>
+        </div>
       </main>
       {isModalOpen && <JobModal onClose={handleCloseModal} />}
     </div>
