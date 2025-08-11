@@ -14,13 +14,15 @@ const mockJobs: Job[] = [
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+    const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState({
+    area: [] as string[],
+    nivel: [] as string[],
+    modelo: [] as string[],
+  });
 
   return (
     <div className="bg-slate-50 min-h-screen">
