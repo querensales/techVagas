@@ -52,10 +52,14 @@ export default function FilterSidebar(){
                             </div>
                         ))}
                     </div>
+        
                 </div>
             ))}
+            <div>
+                <button className="mt-4 w-full bg-teal-600 text-white py-2 rounded-md font-semibold hover:bg-teal-700">
+                    Aplicar Filtros
+                </button>
+            </div>
         </div>
-       
-
     )
 }
