@@ -41,7 +41,15 @@ export default function JobModal({ onClose }: JobModalProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label htmlFor="title" className="block text-sm font-medium text-slate-700">Título da Vaga</label>
-                            <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" placeholder="Ex: Desenvolvedor(a) React" required />
+                            <input 
+                                type="text" 
+                                id="title" 
+                                value={title} 
+                                onChange={(e) => setTitle(e.target.value)} 
+                                className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" 
+                                placeholder="Ex: Desenvolvedor(a) React" 
+                                required
+                             />
                         </div>
                         <div>
                             <label htmlFor="company" className="block text-sm font-medium text-slate-700">Nome da Empresa</label>
