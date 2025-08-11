@@ -5,6 +5,13 @@ import JobModal from './components/JobModal/JobModal';
 import FilterSidebar from './components/FilterSideBar/FilterSidebar';
 import JobList from './components/JobList/JobList';
 
+const mockJobs: Job[] = [
+  { id: 1, title: 'Desenvolvedor(a) Front-end React', company: 'Tech Solutions', location: 'São Paulo, SP', level: 'Pleno', workModel: 'Híbrido', tags: ['React', 'TypeScript', 'TailwindCSS'], area: 'Front-end' },
+  { id: 2, title: 'Engenheiro(a) de Software Back-end', company: 'Inova Core', location: 'Remoto', level: 'Sênior', workModel: 'Remoto', tags: ['Node.js', 'NestJS', 'PostgreSQL'], area: 'Back-end' },
+  { id: 3, title: 'QA (Quality Assurance) Automation', company: 'Future Systems', location: 'Rio de Janeiro, RJ', level: 'Pleno', workModel: 'Presencial', tags: ['Cypress', 'Playwright', 'CI/CD'], area: 'QA' },
+  { id: 4, title: 'Desenvolvedor(a) React Native', company: 'Mobile First', location: 'Remoto', level: 'Júnior', workModel: 'Remoto', tags: ['React Native', 'Firebase', 'Expo'], area: 'Mobile' },
+];
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenModal = () => {
