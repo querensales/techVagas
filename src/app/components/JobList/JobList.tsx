@@ -12,7 +12,7 @@ export default function JobList({ jobs }: JobListProps) {
   return (
     <> 
       {jobs.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col gap-6">
           {jobs.map(job => (
     <div className="space-y-6 mt-8">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
