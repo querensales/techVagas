@@ -91,7 +91,12 @@ export default function Home() {
 
       return searchMatch && areaMatch && nivelMatch && modeloMatch;
     });
-  }, [searchTerm, selectedFilters]);
+  }, [searchTerm, selectedFilters]); 
+
+    const isFiltering = searchTerm !== '' || 
+                      selectedFilters.area.length > 0 || 
+                      selectedFilters.nivel.length > 0 || 
+                      selectedFilters.modelo.length > 0;
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -107,7 +112,7 @@ export default function Home() {
           <div className="w-3/4 space-y-6">
             <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <h2 className="text-2xl font-bold text-slate-800">
-              {filteredJobs.length} vagas encontradas
+               {isFiltering ? `${filteredJobs.length} vagas encontradas` : 'Vagas em Destaque'}
             </h2>
             <JobList jobs={filteredJobs} />
           </div>
