@@ -1,4 +1,3 @@
-// components/JobList/JobList.tsx
 'use client';
 
 import React from 'react';
