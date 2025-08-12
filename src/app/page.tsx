@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import Header from './components/Header/header';
 import CreateJobModal from './components/JobModal/JobModal';
 import FilterSidebar from './components/FilterSideBar/FilterSidebar';
+import JobModal from './components/Header/JobModal/JobModal';
 import JobList from './components/JobList/JobList';
 import SearchBar from './components/SearchBar/SearchBar';
 import { Job } from './components/JobCard/JobCard';
@@ -110,6 +111,11 @@ export default function Home() {
               {filteredJobs.length} vagas encontradas
             </h2>
             <JobList jobs={filteredJobs} />
+            <FilterSidebar />
+        <JobList />
+        <div className="px-4 py-6 sm:px-0">
+          <div className=" h-96 flex justify-center items-center">
+            <JobList />
           </div>
         </div>
       </main>
