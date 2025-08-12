@@ -1,15 +1,51 @@
-"use client";
-import { useState } from 'react';
+'use client';
+import { useState, useMemo } from 'react';
 import Header from './components/Header/header';
-import JobModal from './components/JobModal/JobModal';
+import CreateJobModal from './components/JobModal/JobModal';
 import FilterSidebar from './components/FilterSideBar/FilterSidebar';
 import JobList from './components/JobList/JobList';
+import SearchBar from './components/SearchBar/SearchBar';
+import { Job } from './components/JobCard/JobCard';
 
 const mockJobs: Job[] = [
-  { id: 1, title: 'Desenvolvedor(a) Front-end React', company: 'Tech Solutions', location: 'São Paulo, SP', level: 'Pleno', workModel: 'Híbrido', tags: ['React', 'TypeScript', 'TailwindCSS'], area: 'Front-end' },
-  { id: 2, title: 'Engenheiro(a) de Software Back-end', company: 'Inova Core', location: 'Remoto', level: 'Sênior', workModel: 'Remoto', tags: ['Node.js', 'NestJS', 'PostgreSQL'], area: 'Back-end' },
-  { id: 3, title: 'QA (Quality Assurance) Automation', company: 'Future Systems', location: 'Rio de Janeiro, RJ', level: 'Pleno', workModel: 'Presencial', tags: ['Cypress', 'Playwright', 'CI/CD'], area: 'QA' },
-  { id: 4, title: 'Desenvolvedor(a) React Native', company: 'Mobile First', location: 'Remoto', level: 'Júnior', workModel: 'Remoto', tags: ['React Native', 'Firebase', 'Expo'], area: 'Mobile' },
+  { id: 1, 
+    title: 'Desenvolvedor(a) Front-end React', 
+    company: 'Tech Solutions', 
+    location: 'São Paulo, SP', 
+    level: 'Pleno', workModel: 'Híbrido', 
+    tags: ['React', 'TypeScript', 'TailwindCSS'], 
+    area: 'Front-end' 
+  },
+  {
+    id: 2, 
+    title: 'Engenheiro(a) de Software Back-end', 
+    company: 'Inova Core', 
+    location: 'Remoto', 
+    level: 'Sênior', 
+    workModel: 'Remoto', 
+    tags: ['Node.js', 'NestJS', 'PostgreSQL'], 
+    area: 'Back-end' 
+  },
+  { 
+    id: 3, 
+    title: 'QA (Quality Assurance) Automation', 
+    company: 'Future Systems', 
+    location: 'Rio de Janeiro, RJ', 
+    level: 'Pleno', 
+    workModel: 'Presencial', 
+    tags: ['Cypress', 'Playwright', 'CI/CD'], 
+    area: 'QA' 
+  },
+  { 
+    id: 4, 
+    title: 'Desenvolvedor(a) React Native', 
+    company: 'Mobile First', 
+    location: 'Remoto', 
+    level: 'Júnior', 
+    workModel: 'Remoto', 
+    tags: ['React Native', 'Firebase', 'Expo'], 
+    area: 'Mobile' 
+  },
 ];
 
 export default function Home() {
@@ -17,12 +53,45 @@ export default function Home() {
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
-    const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState({
-    area: [] as string[],
-    nivel: [] as string[],
-    modelo: [] as string[],
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState<{
+    area: string[];
+    nivel: string[];
+    modelo: string[];
+  }>({
+    area: [],
+    nivel: [],
+    modelo: [],
   });
+
+  const handleFilterChange = (category: keyof typeof selectedFilters, value: string) => {
+    setSelectedFilters(prevFilters => {
+      const currentFilters = prevFilters[category];
+      const newFilters = currentFilters.includes(value)
+        ? currentFilters.filter(item => item !== value) 
+        : [...currentFilters, value]; 
+      return {
+        ...prevFilters,
+        [category]: newFilters,
+      };
+    });
+  };
+
+  const filteredJobs = useMemo(() => {
+    return mockJobs.filter(job => {
+      const searchMatch = searchTerm === '' ||
+        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+     
+      const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(job.area);
+      const nivelMatch = selectedFilters.nivel.length === 0 || selectedFilters.nivel.includes(job.level);
+      const modeloMatch = selectedFilters.modelo.length === 0 || selectedFilters.modelo.includes(job.workModel);
+
+      return searchMatch && areaMatch && nivelMatch && modeloMatch;
+    });
+  }, [searchTerm, selectedFilters]);
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -30,13 +99,21 @@ export default function Home() {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="gap-8 flex">
           <div className="w-1/4">
-            <FilterSidebar />
+            <FilterSidebar 
+              selectedFilters={selectedFilters}
+              onFilterChange={handleFilterChange}
+            />
           </div>
-          <div className="w-3/4"><JobList /></div>
+          <div className="w-3/4 space-y-6">
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <h2 className="text-2xl font-bold text-slate-800">
+              {filteredJobs.length} vagas encontradas
+            </h2>
+            <JobList jobs={filteredJobs} />
+          </div>
         </div>
-
       </main>
-      {isModalOpen && <JobModal onClose={handleCloseModal} />}
+      {isModalOpen && <CreateJobModal onClose={handleCloseModal} />}
     </div>
   );
 }

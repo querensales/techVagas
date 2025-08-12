@@ -1,26 +1,27 @@
+// components/JobList/JobList.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+import React from 'react';
+import JobCard, { Job } from '../JobCard/JobCard';
 
-export default function JobList() {
+interface JobListProps {
+  jobs: Job[];
+}
+
+export default function JobList({ jobs }: JobListProps) {
   return (
-    <div className="space-y-6 mt-8">
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <h2 className="text-2xl font-bold text-slate-800 pt-4">
-        {searchTerm ? `${filteredJobs.length} vagas encontradas` : 'Vagas em Destaque'}
-      </h2>
-      {filteredJobs.length > 0 ? (
-        <div className="grid gap-6">
-          {filteredJobs.map(job => (
+    <> 
+      {jobs.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobs.map(job => (
             <JobCard key={job.id} job={job} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-10">
+        <div className="text-center py-10 bg-white rounded-lg shadow-md">
           <p className="text-slate-500">Nenhuma vaga encontrada para sua busca.</p>
         </div>
       )}
-    </div>
+    </>
   );
 };
