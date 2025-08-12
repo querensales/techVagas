@@ -1,30 +1,19 @@
+// components/JobList/JobList.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import JobCard, {Job} from '../JobCard/JobCard';
-import SearchBar from '../SearchBar/SearchBar';
+import React from 'react';
+import JobCard, { Job } from '../JobCard/JobCard';
 
-// Dados de exemplo (mock data).
-const mockJobs: Job[] = [
-  { id: 1, title: 'Desenvolvedor(a) Front-end React', company: 'Tech Solutions', location: 'São Paulo, SP', level: 'Pleno', workModel: 'Híbrido', tags: ['React', 'TypeScript', 'TailwindCSS'] },
-  { id: 2, title: 'Engenheiro(a) de Software Back-end', company: 'Inova Core', location: 'Remoto', level: 'Sênior', workModel: 'Remoto', tags: ['Node.js', 'NestJS', 'PostgreSQL'] },
-  { id: 3, title: 'QA (Quality Assurance) Automation', company: 'Future Systems', location: 'Rio de Janeiro, RJ', level: 'Pleno', workModel: 'Presencial', tags: ['Cypress', 'Playwright', 'CI/CD'] },
-  { id: 4, title: 'Desenvolvedor(a) React Native', company: 'Mobile First', location: 'Remoto', level: 'Júnior', workModel: 'Remoto', tags: ['React Native', 'Firebase', 'Expo'] },
-];
+interface JobListProps {
+  jobs: Job[];
+}
 
-export default function JobList() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const filteredJobs = useMemo(() => {
-    if (!searchTerm) {return mockJobs}
-
-    return mockJobs.filter(job =>
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-  }, [searchTerm]); 
-
+export default function JobList({ jobs }: JobListProps) {
   return (
+    <> 
+      {jobs.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobs.map(job => (
     <div className="space-y-6 mt-8">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <h2 className="text-2xl font-bold text-slate-800 pt-4">
@@ -38,11 +27,11 @@ export default function JobList() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-10">
+        <div className="text-center py-10 bg-white rounded-lg shadow-md">
           <p className="text-slate-500">Nenhuma vaga encontrada para sua busca.</p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
