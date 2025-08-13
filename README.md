@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tech Vagas 💼
 
-## Getting Started
+## 📝 Descrição do Projeto
 
-First, run the development server:
+**Tech Vagas** é um portal de empregos focado no mercado de tecnologia, desenvolvido como um projeto de portfólio para demonstrar habilidades fundamentais em desenvolvimento front-end com React. A aplicação permite que usuários busquem, filtrem e visualizem vagas de tecnologia de forma simples e intuitiva.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Este projeto foi construído com foco em uma arquitetura de componentes limpa, gerenciamento de estado moderno e boas práticas de desenvolvimento, incluindo um fluxo de trabalho organizado com Git.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Funcionalidades Principais
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Busca Dinâmica:** Pesquise vagas por título, empresa ou tecnologia.
+- **Filtragem Avançada:** Refine a busca com filtros por área, nível de experiência e modelo de trabalho.
+- **Listagem de Vagas:** Interface clara e organizada para visualização das oportunidades em formato de cards.
+- **Criação de Vagas:** Um modal interativo permite que recrutadores publiquem novas vagas facilmente.
+- **Design Responsivo (em desenvolvimento):** Planejado para se adaptar a diferentes tamanhos de tela.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tecnologias Utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **React:** Biblioteca principal para a construção da interface de usuário.
+- **Next.js:** Framework React para otimização, roteamento e renderização.
+- **TypeScript:** Para um código mais seguro, previsível e escalável.
+- **Tailwind CSS:** Framework de CSS para estilização rápida e moderna.
+- **Git & GitHub:** Para versionamento de código e fluxo de trabalho em equipe.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Como Executar o Projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para rodar este projeto localmente, siga os passos abaixo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/querensales/techVagas.git](https://github.com/querensales/techVagas.git)
+    ```
+
+2.  **Navegue até o diretório do projeto:**
+    ```bash
+    cd techVagas
+    ```
+
+3.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+4.  **Execute o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+5.  Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+
+---
+
+## 🏛️ Arquitetura do Projeto
+
+O projeto segue uma arquitetura baseada em componentes, onde a página principal (`page.tsx`) atua como o "cérebro", gerenciando o estado global (filtros, busca, etc.). Os componentes filhos (`JobList`, `FilterSidebar`, etc.) são "apresentacionais", recebendo dados e funções via props. Essa abordagem, conhecida como **Lifting State Up**, mantém o código organizado, desacoplado e fácil de manter.
+
+---
+
+Desenvolvido com ❤️ por **Quéren Sales**.

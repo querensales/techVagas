@@ -39,13 +39,43 @@ const mockJobs: Job[] = [
   { 
     id: 4, 
     title: 'Desenvolvedor(a) React Native', 
-    company: 'Mobile First', 
+    company: 'Kleber Bank', 
     location: 'Remoto', 
     level: 'Júnior', 
     workModel: 'Remoto', 
     tags: ['React Native', 'Firebase', 'Expo'], 
     area: 'Mobile' 
   },
+  {
+    id: 5,
+    title: 'Desenvolvedor(a) Full Stack',
+    company: 'Global Tech',
+    location: 'São Paulo, SP',
+    level: 'Sênior',
+    workModel: 'Híbrido',
+    tags: ['React', 'Node.js', 'TypeScript'],
+    area: 'Full Stack'
+  },
+  {
+    id: 6,
+    title: 'Desenvolvedor(a) Python',
+    company: 'Data Corp',
+    location: 'Remoto',
+    level: 'Pleno',
+    workModel: 'Remoto',
+    tags: ['Python', 'Django', 'Machine Learning'],
+    area: 'Back-end'
+  },
+  {
+    id: 7,
+    title: 'DevOps',
+    company: 'Data Corp',
+    location: 'Brasília, DF',
+    level: 'Pleno',
+    workModel: 'Híbrido',
+    tags: ['Python', 'Machine Learning'],
+    area: 'DevOps'
+  }
 ];
 
 export default function Home() {
